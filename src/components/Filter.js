@@ -1,23 +1,17 @@
 import React from "react";
 
-function Filters ({categories, selectedCategory, onCategoryChange }) {
-
-return (
+function Filter({ onCategoryChange }) {
+  return (
     <div className="Filter">
-        <select
-        name="filter"
-        value={selectedCategory}
-        onChange={(event) => onCategoryChange(event.target.value)}
-        >
-            <option value="all">Filter by category</option>
-            {categories.map((category) => (
-                <option key={category} value={category}>
-                    {category}
-                </option>
-            ))}
-        </select>
+      <input type="text" name="search" placeholder="Search..." />
+      <select name="filter" onChange={onCategoryChange}>
+        <option value="All">Filter by category</option>
+        <option value="Produce">Produce</option>
+        <option value="Dairy">Dairy</option>
+        <option value="Dessert">Dessert</option>
+      </select>
     </div>
-
-); 
+  );
 }
-export default Filters;
+
+export default Filter;
