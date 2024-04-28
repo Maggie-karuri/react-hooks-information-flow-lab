@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import Item from "./Item";
+import Filter from "./Filter";
 
 function ShoppingList({ items }) {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState({ category: "All", priceRange: "All" });
 
   function handleCategoryChange(event) {
-    setSelectedCategory(event.target.value);
+    
   }
 
   const itemsToDisplay = items.filter((item) => {
     if (selectedCategory === "All") return true;
 
-    return item.category === selectedCategory;
+    return item.category.toLowerCase() === selectedCategory.toLowerCase();
   });
+
 
   return (
     <div className="ShoppingList">
